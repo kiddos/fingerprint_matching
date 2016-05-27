@@ -1,0 +1,13 @@
+--Resolution : 180 * 80
+--Original point = Left-bottom point
+--No. of feature points:
+8
+--Feature point coordinate:
+p1 = (36,5)
+p2 = (68,15)
+p3 = (83,18)
+p4 = (68,37)
+p5 = (64,68)
+p6 = (96,59)
+p7 = (141,47)
+p8 = (170,14)
