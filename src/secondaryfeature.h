@@ -14,5 +14,7 @@ double secondaryfeature_matching_threshold_phi(double phi);
 double secondaryfeature_matching_threshold_delta(double delta);
 SecondaryFeature secondaryfeature_create(MinutiaeRaw m, MinutiaeRaw n0,
                                          MinutiaeRaw n1);
+bool secondaryfeature_is_matched(SecondaryFeature f1, SecondaryFeature f2);
+void secondaryfeature_info(SecondaryFeature feature);
 
 #endif /* end of include guard: SECONDARYFEATURE_H */

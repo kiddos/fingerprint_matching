@@ -33,3 +33,16 @@ SecondaryFeature secondaryfeature_create(MinutiaeRaw m, MinutiaeRaw n0,
 
   return feature;
 }
+
+bool secondaryfeature_is_matched(SecondaryFeature f1, SecondaryFeature f2) {
+  return (fabs(f1.r0-f2.r0) <= secondaryfeature_matching_threshold_r(f1.r0) &&
+      fabs(f1.r1-f2.r1) <= secondaryfeature_matching_threshold_r(f1.r1) &&
+      fabs(f1.phi0-f2.phi0) <= secondaryfeature_matching_threshold_phi(f1.phi0) &&
+      fabs(f1.phi1-f2.phi1) <= secondaryfeature_matching_threshold_phi(f1.phi1) &&
+      fabs(f1.delta-f2.delta) <= secondaryfeature_matching_threshold_delta(f1.delta));
+}
+
+void secondaryfeature_info(SecondaryFeature feature) {
+  printf("feature: (%lf,%lf,%lf,%lf,%lf)\n",
+      feature.r0, feature.r1, feature.phi0, feature.phi1, feature.delta);
+}
