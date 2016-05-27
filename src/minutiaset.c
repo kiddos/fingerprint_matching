@@ -21,6 +21,7 @@ MinutiaRawSet *minutiarawset_load(const char* const filepath) {
       if (!startwith(buffer, "--")) {
         if (set->size < 0) {
           set->size = atoi(buffer);
+          set->set = calloc(set->size, sizeof(MinutiaeRaw));
         } else {
           // TODO need to implement reading orientation
           int num = 0, x = 0, y = 0;
@@ -63,6 +64,20 @@ int minutiaset_compute_num_matched(MinutiaSet *q, MinutiaSet *r) {
     }
   }
   return match_count;
+}
+
+void minutiarawset_info(MinutiaRawSet *rawset) {
+  int i;
+  for (i = 0 ; i < rawset->size ; ++i) {
+    minutiaeraw_info(rawset->set[i]);
+  }
+}
+
+void minutiaset_info(MinutiaSet *set) {
+  int i;
+  for (i = 0 ; i < set->size ; ++i) {
+    minutiae_info(set->set[i]);
+  }
 }
 
 void minutiarawset_release(MinutiaRawSet *set) {
