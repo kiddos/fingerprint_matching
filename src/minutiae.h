@@ -19,7 +19,7 @@ Vec3 minutiaeraw_delta(MinutiaeRaw mr1, MinutiaeRaw mr2);
 MinutiaeRaw minutiaeraw_create(double x, double y, double orientation);
 Minutiae minutiae_create(MinutiaeRaw r, MinutiaeRaw p);
 bool minutiae_is_matched(Minutiae query, Minutiae refererence);
-void minutiae_info(Minutiae m);
 void minutiaeraw_info(MinutiaeRaw m);
+void minutiae_info(Minutiae m);
 
 #endif /* end of include guard: MINUTIAE_H */

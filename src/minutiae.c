@@ -1,6 +1,5 @@
 #include "minutiae.h"
 
-
 double minutiae_matching_threshold_r(double r) {
   return 1 + 0.1 * r;
 }
