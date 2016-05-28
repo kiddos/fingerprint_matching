@@ -5,11 +5,11 @@ double minutiae_matching_threshold_r(double r) {
 }
 
 double minutiae_matching_threshold_phi(double phi) {
-  return PI/30 + 0.1 + phi;
+  return PI/30 + 0.01 * phi;
 }
 
 double minutiae_matching_threshold_theta(double theta) {
-  return PI/30 + 0.1 + theta;
+  return PI/30 + 0.01 * theta;
 }
 
 Vec3 minutiaeraw_delta(MinutiaeRaw mr1, MinutiaeRaw mr2) {
