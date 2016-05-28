@@ -4,7 +4,15 @@ const double PI = 3.14159265358979323846;
 
 double arctan(double dx, double dy) {
   double phi = 0;
-  if (dx >= 0) {
+  if (dx == 0) {
+    if (dy > 0) {
+      phi = PI/2;
+    } else if(dy < 0) {
+      phi = 3*PI/2;
+    } else {
+      phi = NAN;
+    }
+  } else if (dx > 0) {
     if (dy >= 0) {
       phi = atan(dy/dx);
     } else {
