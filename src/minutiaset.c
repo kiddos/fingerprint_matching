@@ -76,10 +76,10 @@ int minutiaset_compute_num_matched(MinutiaSet query, MinutiaSet reference) {
     for (j = 0 ; j < reference.size ; ++j) {
       if (minutiae_is_matched(query.set[i], reference.set[j])) {
         match_count ++;
-        printf("query: ");
-        minutiae_info(query.set[i]);
-        printf("reference: ");
-        minutiae_info(reference.set[j]);
+        /** printf("query: "); */
+        /** minutiae_info(query.set[i]); */
+        /** printf("reference: "); */
+        /** minutiae_info(reference.set[j]); */
       }
     }
   }
