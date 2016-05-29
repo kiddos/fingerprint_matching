@@ -22,9 +22,10 @@ def get_valid_output_list(input_path):
     output_list = []
     for mf in minutia_files:
         match = re.findall(r'([0-9]+)[\s-]*\.txt', mf)
-        num = int(match[0])
-        if num < VALID_RANGE:
-            output_list.append(mf)
+        if match:
+            num = int(match[0])
+            if num < VALID_RANGE:
+                output_list.append(mf)
     return output_list
 
 def create_order_list(input_path):
