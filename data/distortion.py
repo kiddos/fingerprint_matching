@@ -58,8 +58,12 @@ def distort_reference_set(input_path, output_path, distortion):
         distorted_file.close()
 
 if __name__ == '__main__':
-    direct = sys.argv[1]
-    input_path = os.path.join(direct, REFERENCE)
-    output_path = os.path.join(direct, QUERY)
-    distort_reference_set(input_path, output_path, 6)
+    try:
+        direct = sys.argv[1]
+        distortion = int(sys.argv[2])
+        input_path = os.path.join(direct, REFERENCE)
+        output_path = os.path.join(direct, QUERY)
+        distort_reference_set(input_path, output_path, distortion)
+    except:
+        print 'usage: ./distortion.py <directory> <distortion amount>'
 
