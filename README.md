@@ -1,5 +1,6 @@
 Minutiae Based Fingerprint Matching
 ===================================
+[![Build Status](https://travis-ci.org/kiddos/fingerprint_matching.svg?branch=master)](https://travis-ci.org/kiddos/fingerprint_matching)
 
 ## Modules
 1. Common
