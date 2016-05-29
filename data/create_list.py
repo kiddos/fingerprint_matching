@@ -49,10 +49,13 @@ def create_random_list(input_path, select_num):
         output_file.write('\n')
 
 if __name__ == '__main__':
-    direct = sys.argv[1]
-    query_path = os.path.join(direct, QUERY)
-    reference_path = os.path.join(direct, REFERENCE)
+    try:
+        direct = sys.argv[1]
+        select_num = int(sys.argv[2])
+        query_path = os.path.join(direct, QUERY)
+        reference_path = os.path.join(direct, REFERENCE)
 
-    create_random_list(query_path, 10)
-    create_order_list(reference_path)
-
+        create_random_list(query_path, select_num)
+        create_order_list(reference_path)
+    except:
+        print 'usage: ./create_list.py <directory> <select number>'
