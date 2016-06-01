@@ -1,9 +1,11 @@
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -O3 -Wall -Wextra -DDEBUG")
 
 # sources
-set(MINUTIAE_SOURCE minutiae.c minutiaset.c)
-set(FINGERPRINT_SOURCE fingerprint.c fingerprintset.c)
-set(SOURCE common.c ${MINUTIAE_SOURCE} ${FINGERPRINT_SOURCE})
+# basic math modules
+set(BASIC_SRC common.c vec.c point.c line.c polygon.c)
+set(MINUTIAE_SRC minutiae.c minutiaset.c)
+set(FINGERPRINT_SRC fingerprint.c fingerprintset.c)
+set(SOURCE ${BASIC_SRC} ${MINUTIAE_SRC} ${FINGERPRINT_SRC})
 set(SOURCE ${SOURCE} secondaryfeature.c similarity.c)
 
 # headers
