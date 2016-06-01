@@ -13,9 +13,11 @@ Minutiae Based Fingerprint Matching
   * group MinutiaRawSet and MinutiaSets in a fingerprint
 5. FingerprintSet
   * group Fingerprint together and find best match fingerprint
+6. SimilarityScore
+  * different method of computing similarity of fingerprint
 
 ## TODO
-- [ ] need to adjust threshold functions for 2 minutia matching so that higher similarity score can be reached
+- [ ] implement convex hull and compute Oi and Or
+- [x] need to adjust threshold functions for 2 minutia matching so that higher similarity score can be reached
 - [ ] implement heuristic rule to compute similarity score
 - [ ] save similarity score into a file so thay the average can be computed
-- [ ] implement convex hull and ray casting algorithm to check rather a point is inside the polygon
