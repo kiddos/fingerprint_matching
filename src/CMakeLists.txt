@@ -11,7 +11,7 @@ set(SOURCE ${SOURCE} secondaryfeature.c similarity.c)
 # headers
 set(MINUTIAE_HEADER minutiae.h minutiaset.h)
 set(FINGERPRINT_HEADER fingerprint.h fingerprintset.h)
-set(HEADER common.c ${MINUTIAE_HEADER} ${FINGERPRINT_HEADER})
+set(HEADER common.h ${MINUTIAE_HEADER} ${FINGERPRINT_HEADER})
 set(HEADER ${HEADER} secondaryfeature.h similarity.h)
 
 add_library(fm ${SOURCE} ${HEADER})
