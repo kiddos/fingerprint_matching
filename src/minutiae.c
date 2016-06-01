@@ -1,7 +1,7 @@
 #include "minutiae.h"
 
 double minutiae_matching_threshold_r(double r) {
-  return 1 + 0.1 * r;
+  return 6 + 0.1 * r;
 }
 
 double minutiae_matching_threshold_phi(double phi) {
