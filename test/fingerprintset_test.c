@@ -10,7 +10,7 @@ void test_find_best_match(FingerprintSet query, FingerprintSet reference) {
     const int best = fingerprintset_find_best_match(query.fingerprints[i],
                                                     reference,
                                                     evaluator, &best_score);
-    printf("best match for %s in reference: %s\n",
+    printf("best match for query (I) %s is %s in reference (R)\n",
           query.fingerprints[i].name, reference.fingerprints[best].name);
   }
 }
