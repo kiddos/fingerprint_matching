@@ -5,14 +5,15 @@
 #include <string.h>
 #include <math.h>
 
-extern const double PI;
+#include "type.h"
+#include "vec.h"
+#include "point.h"
+#include "line.h"
+#include "polygon.h"
 
-typedef struct vec3_t {
-  double x, y, z;
-} Vec3;
+extern const double PI;
+extern const double SQRT2;
 
 double arctan(double dx, double dy);
-double vec_dot(Vec3 v1, Vec3 v2);
-Vec3 vec_cross(Vec3 v1, Vec3 v2);
 
 #endif /* end of include guard: COMMON_H */
