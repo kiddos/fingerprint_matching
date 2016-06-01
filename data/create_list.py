@@ -43,8 +43,15 @@ def create_random_list(input_path, select_num):
     output_name = input_path.split('/')[-1] + '.txt'
     output_file = open(output_name, 'w')
 
-    for i in range(select_num):
-        index = random.randrange(len(output_list))
+    random_list = []
+    while len(random_list) < select_num:
+        random_num = random.randrange(len(output_list))
+        while random_num in random_list:
+            random_num = random.randrange(len(output_list))
+        random_list.append(random_num)
+    print random_list
+
+    for index in random_list:
         output_file.write(os.path.join(input_path, output_list[index]))
         output_file.write('\n')
 
