@@ -87,6 +87,8 @@ int fingerprintset_find_best_match(Fingerprint query,
 
   int maxindex = 0;
   double maxval = sc.compute_score(input);
+  /** printf("n = %d, sizei = %d, sizer = %d, Oi = %d, Or = %d, savg = %lf\n", */
+  /**       n, sizei, sizer, oi, or, savg); */
   /** printf("score for %s(I) %s(R): %lf\n", query.name, */
   /**       referenceset.fingerprints[0].name, maxval); */
 
@@ -97,6 +99,8 @@ int fingerprintset_find_best_match(Fingerprint query,
     input = similarityscore_input_create(n, sizei, sizer, oi, or, savg);
 
     double val = sc.compute_score(input);
+    /** printf("n = %d, sizei = %d, sizer = %d, Oi = %d, Or = %d, savg = %lf\n", */
+    /**       n, sizei, sizer, oi, or, savg); */
     /** printf("score for %s(I) %s(R): %lf\n", query.name, */
     /**       referenceset.fingerprints[i].name, val); */
     if (val > maxval) {
