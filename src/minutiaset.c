@@ -15,6 +15,17 @@ static bool startwith(char *str, char *key) {
   return 1;
 }
 
+MinutiaRawSet minutiarawset_create_copy(MinutiaRawSet rawset) {
+  MinutiaRawSet newset = {rawset.size, NULL};
+  newset.set = calloc(rawset.size, sizeof(MinutiaeRaw));
+
+  int i;
+  for (i = 0 ; i < rawset.size ; ++i) {
+    newset.set[i] = rawset.set[i];
+  }
+  return newset;
+}
+
 MinutiaRawSet minutiarawset_load(const char* const filepath, bool *success) {
   MinutiaRawSet set;
   FILE *file = fopen(filepath, "r");
@@ -84,6 +95,59 @@ int minutiaset_compute_num_matched(MinutiaSet query, MinutiaSet reference) {
     }
   }
   return match_count;
+}
+
+void minutiarawset_get_mean(MinutiaRawSet set, MinutiaeRaw *mean) {
+  MinutiaeRaw center = {0, 0, 0};
+
+  int i;
+  for (i = 0 ; i < set.size ; ++i) {
+    center.x += set.set[i].x;
+    center.y += set.set[i].y;
+  }
+
+  center.x /= (double) set.size;
+  center.y /= (double) set.size;
+
+  MinutiaeRaw closest = set.set[0];
+  double dist = vec_length(minutiaeraw_delta(center, closest));
+  for (i = 1 ; i < set.size ; ++i) {
+    double newdist = vec_length(minutiaeraw_delta(center, closest));
+    if (newdist < dist) {
+      dist = newdist;
+      closest = set.set[i];
+    }
+  }
+
+  *mean = closest;
+}
+
+void minutiarawset_get_2_closest(MinutiaRawSet set, MinutiaeRaw center,
+                                 MinutiaeRaw *n1, MinutiaeRaw *n2) {
+  MinutiaRawSet sorted = minutiarawset_create_copy(set);
+
+  int i, j;
+  for (i = 0 ; i < sorted.size ; ++i) {
+    for (j = i + 1 ; j < sorted.size ; ++j) {
+      const double dist1 = vec_length(minutiaeraw_delta(center, sorted.set[i]));
+      const double dist2 = vec_length(minutiaeraw_delta(center, sorted.set[j]));
+      if (dist1 > dist2) {
+        const MinutiaeRaw temp = sorted.set[i];
+        sorted.set[i] = sorted.set[j];
+        sorted.set[j] = temp;
+      }
+    }
+  }
+
+  if (sorted.size >= 3) {
+    *n1 = sorted.set[1];
+    *n2 = sorted.set[2];
+  } else {
+    *n1 = minutiaeraw_create(0, 0, 0);
+    *n2 = minutiaeraw_create(0, 0, 0);
+  }
+
+  minutiarawset_release(sorted);
 }
 
 void minutiarawset_info(MinutiaRawSet rawset) {
