@@ -57,6 +57,22 @@ int fingerprint_get_num_minutia(Fingerprint fp) {
   return fp.rawset.size;
 }
 
+SecondaryFeature fingerprint_get_center_secondary_feature(Fingerprint fp) {
+  MinutiaeRaw center, n1, n2;
+  minutiarawset_get_mean(fp.rawset, &center);
+  minutiarawset_get_2_closest(fp.rawset, center, &n1, &n2);
+
+  SecondaryFeature sf = secondaryfeature_create(center, n1, n2);
+  return sf;
+}
+
+bool fingerprint_match_secondary_feature(Fingerprint fp1, Fingerprint fp2) {
+  const SecondaryFeature sf1 = fingerprint_get_center_secondary_feature(fp1);
+  const SecondaryFeature sf2 = fingerprint_get_center_secondary_feature(fp2);
+
+  return secondaryfeature_is_matched(sf1, sf2);
+}
+
 void fingerprint_info(Fingerprint fp) {
 #ifdef DEBUG
   if (fp.name != NULL)
