@@ -4,7 +4,7 @@
 void test_find_best_match(FingerprintSet query, FingerprintSet reference) {
   SimilarityScore evaluator = similarityscore_create(TRADITIONAL);
 
-  int i;
+  int i, count = 0;
   for (i = 0 ; i < query.numprint ; ++i) {
     double best_score = 0;
     const int best = fingerprintset_find_best_match(query.fingerprints[i],
@@ -12,7 +12,12 @@ void test_find_best_match(FingerprintSet query, FingerprintSet reference) {
                                                     evaluator, &best_score);
     printf("best match for query (I) %s is %s in reference (R)\n",
           query.fingerprints[i].name, reference.fingerprints[best].name);
+    if (strcmp(query.fingerprints[i].name,
+               reference.fingerprints[best].name) == 0) {
+      ++ count;
+    }
   }
+  printf("correct count: %d\n", count);
 }
 
 int main(int argc, char *argv[]) {
