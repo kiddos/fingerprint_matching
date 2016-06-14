@@ -18,6 +18,9 @@ Fingerprint fingerprint_create_empty();
 Fingerprint fingerprint_load(const char *const filepath, bool *success);
 int fingerprint_get_num_matched_minutia(const Fingerprint query,
                                         const Fingerprint reference);
+int fingerprint_get_num_matched_secondary_feature(const Fingerprint query,
+                                                  const Fingerprint reference);
+int fingerprint_get_n(const Fingerprint query, const Fingerprint reference);
 int fingerprint_get_num_minutia(const Fingerprint fp);
 SecondaryFeature fingerprint_get_center_secondary_feature(const Fingerprint fp);
 bool fingerprint_match_secondary_feature(const Fingerprint fp1,

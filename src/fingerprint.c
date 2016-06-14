@@ -55,6 +55,18 @@ int fingerprint_get_num_matched_minutia(const Fingerprint query,
   return count;
 }
 
+int fingerprint_get_num_matched_secondary_feature(const Fingerprint query,
+                                                  const Fingerprint reference) {
+  return secondaryfeatureset_get_num_matched(query.sset, reference.sset);
+}
+
+int fingerprint_get_n(const Fingerprint query, const Fingerprint reference) {
+  return fingerprint_get_num_matched_minutia(query, reference) +
+      fingerprint_get_num_matched_secondary_feature(query, reference);
+  /** return fingerprint_get_num_matched_secondary_feature(query, reference); */
+  /** return fingerprint_get_num_matched_minutia(query, reference); */
+}
+
 int fingerprint_get_num_minutia(const Fingerprint fp) {
   return fp.rawset.size;
 }
