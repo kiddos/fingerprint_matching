@@ -5,11 +5,11 @@ double secondaryfeature_matching_threshold_r(double r) {
 }
 
 double secondaryfeature_matching_threshold_phi(double phi) {
-  return PI/30 + 0.1 + phi;
+  return PI/30 + 0.1 * phi;
 }
 
 double secondaryfeature_matching_threshold_delta(double delta) {
-  return PI/30 + 0.1 + delta;
+  return PI/30 + 0.1 * delta;
 }
 
 SecondaryFeature secondaryfeature_create(MinutiaeRaw m, MinutiaeRaw n0,
