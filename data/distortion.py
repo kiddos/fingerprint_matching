@@ -9,7 +9,7 @@ import sys
 QUERY = 'query'
 REFERENCE = 'reference'
 
-def distort_reference_set(input_path, output_path, distortion):
+def distort_reference_set(input_path, output_path, distortion, output=False):
     if not os.path.exists(output_path):
         os.mkdir(output_path)
 
@@ -25,7 +25,8 @@ def distort_reference_set(input_path, output_path, distortion):
         mf = open(input_full_path, "r")
         distorted_file = open(output_full_path, "w")
 
-        print 'distorting ', input_full_path, ' ...'
+        if output:
+            print 'distorting ', input_full_path, ' ...'
         num = -1
         for line in mf:
             if not line.startswith('--') and \
